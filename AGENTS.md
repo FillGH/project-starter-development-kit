@@ -42,7 +42,17 @@ Before substantial implementation, confirm that `PROJECT.md` provides enough cla
 
 Perfect documentation is not required. Avoid implementing from unresolved guesses that could materially change the solution.
 
-## 5. Verify against evidence
+## 5. Build in reviewable increments
+
+- Do not treat BUILD as one large implementation step when earlier feedback can reduce rework.
+- Identify the part with the highest uncertainty, human-feedback need, or cost of late change and expose a reviewable version early.
+- Prefer validating that part before committing to expensive integration, infrastructure, or downstream implementation.
+- For UI-heavy work, this often means a working UI preview with representative mock data before backend/database integration.
+- For non-UI work, the early reviewable artifact may be a calculation, script output, simulation, API contract, transformation result, hardware behavior, or another concrete result.
+- Do not force the same sub-phases onto every project; choose increments that fit the work.
+- Keep early previews clearly separate from production evidence. Final verification must cover the intended integrated system and target environment where those materially affect correctness.
+
+## 6. Verify against evidence
 
 - Verification must map back to acceptance criteria and material risks.
 - Use the lightest verification method that provides credible evidence.
@@ -50,7 +60,7 @@ Perfect documentation is not required. Avoid implementing from unresolved guesse
 - Automate tests when logic, regression risk, repeated execution, money, important data, production impact, or similar consequences justify it.
 - Passing compilation or a successful deployment is not by itself evidence that the project outcome is correct.
 
-## 6. Review policy
+## 7. Review policy
 
 Review is decision support, not an authority.
 
@@ -74,7 +84,7 @@ For DEFER or REJECT, record a short rationale where it will remain visible if th
 
 Avoid repeated review cycles unless a new change or unresolved material risk justifies another review.
 
-## 7. Change control without bureaucracy
+## 8. Change control without bureaucracy
 
 A baseline may change when new evidence or requirements justify it.
 
@@ -87,7 +97,7 @@ When a material requirement changes:
 
 Do not allow the implementation to become the only record of a changed requirement.
 
-## 8. Release responsibly
+## 9. Release responsibly
 
 A release should satisfy the Ready to Release gate in `PROJECT.md` at a rigor level proportionate to risk.
 
@@ -103,7 +113,7 @@ Consider, where relevant:
 
 Do not add these controls when their cost exceeds the credible consequence they mitigate.
 
-## 9. After release
+## 10. After release
 
 Treat operation as part of engineering.
 
@@ -116,7 +126,7 @@ When useful, observe whether the solution:
 
 Capture reusable lessons, but do not turn a one-off event into a permanent core rule unless repeated experience or high severity justifies it.
 
-## 10. Default decision rule
+## 11. Default decision rule
 
 When multiple approaches satisfy the current project:
 
