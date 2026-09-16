@@ -29,7 +29,24 @@ Add a control when the project's risk, complexity, collaboration needs, or repea
 
 Do not create process solely because a tool or template makes it available.
 
-## 4. Build only when Ready to Build
+## 4. Refine feedback-sensitive design before expensive integration
+
+When a project is **user-facing and UI-heavy**, and late interface changes would force meaningful backend/integration rework, treat UI/UX refinement as part of DESIGN rather than postponing it until the integrated application exists.
+
+Default approach for such work:
+
+1. Create a lightweight working prototype/preview using representative mock data.
+2. Exercise the important user flows and realistic states.
+3. Refine information hierarchy, layout, wording, actions, navigation, and responsive behavior on representative target devices/viewports.
+4. Resolve material interaction decisions with the owner/user.
+5. Record the accepted UI/UX baseline or prototype reference in `PROJECT.md`.
+6. Do not begin substantial backend, database, authentication, infrastructure, or deployment integration until that baseline is accepted, unless the integration itself is required to resolve a material design uncertainty.
+
+Do not require pixel-perfect styling or exhaustive edge-state polish at this stage. The purpose is to stabilize the fundamental interaction model before integration makes change expensive.
+
+For non-UI projects, use an equivalent early artifact only when it materially reduces uncertainty or rework; do not force a UI-style prototype process onto unrelated work.
+
+## 5. Build only when Ready to Build
 
 Before substantial implementation, confirm that `PROJECT.md` provides enough clarity on:
 
@@ -37,22 +54,21 @@ Before substantial implementation, confirm that `PROJECT.md` provides enough cla
 - scope and out of scope;
 - material constraints and assumptions;
 - the chosen design direction;
-- acceptance criteria; and
-- material risks.
+- acceptance criteria;
+- material risks; and
+- for UI-heavy products where interface decisions drive implementation, an accepted UI/UX interaction baseline.
 
 Perfect documentation is not required. Avoid implementing from unresolved guesses that could materially change the solution.
 
-## 5. Build in reviewable increments
+## 6. Build in reviewable increments
 
 - Do not treat BUILD as one large implementation step when earlier feedback can reduce rework.
-- Identify the part with the highest uncertainty, human-feedback need, or cost of late change and expose a reviewable version early.
-- Prefer validating that part before committing to expensive integration, infrastructure, or downstream implementation.
-- For UI-heavy work, this often means a working UI preview with representative mock data before backend/database integration.
-- For non-UI work, the early reviewable artifact may be a calculation, script output, simulation, API contract, transformation result, hardware behavior, or another concrete result.
-- Do not force the same sub-phases onto every project; choose increments that fit the work.
-- Keep early previews clearly separate from production evidence. Final verification must cover the intended integrated system and target environment where those materially affect correctness.
+- Expose remaining uncertainty early.
+- Prefer validating uncertain logic or integration boundaries before committing to unnecessary downstream complexity.
+- Do not reopen an accepted UI/UX baseline without a concrete requirement, usability finding, or implementation constraint.
+- Keep early prototypes clearly separate from production evidence. Final verification must cover the intended integrated system and target environment where those materially affect correctness.
 
-## 6. Verify against evidence
+## 7. Verify against evidence
 
 - Verification must map back to acceptance criteria and material risks.
 - Use the lightest verification method that provides credible evidence.
@@ -60,7 +76,7 @@ Perfect documentation is not required. Avoid implementing from unresolved guesse
 - Automate tests when logic, regression risk, repeated execution, money, important data, production impact, or similar consequences justify it.
 - Passing compilation or a successful deployment is not by itself evidence that the project outcome is correct.
 
-## 7. Review policy
+## 8. Review policy
 
 Review is decision support, not an authority.
 
@@ -84,7 +100,7 @@ For DEFER or REJECT, record a short rationale where it will remain visible if th
 
 Avoid repeated review cycles unless a new change or unresolved material risk justifies another review.
 
-## 8. Change control without bureaucracy
+## 9. Change control without bureaucracy
 
 A baseline may change when new evidence or requirements justify it.
 
@@ -97,7 +113,7 @@ When a material requirement changes:
 
 Do not allow the implementation to become the only record of a changed requirement.
 
-## 9. Release responsibly
+## 10. Release responsibly
 
 A release should satisfy the Ready to Release gate in `PROJECT.md` at a rigor level proportionate to risk.
 
@@ -113,7 +129,7 @@ Consider, where relevant:
 
 Do not add these controls when their cost exceeds the credible consequence they mitigate.
 
-## 10. After release
+## 11. After release
 
 Treat operation as part of engineering.
 
@@ -126,7 +142,7 @@ When useful, observe whether the solution:
 
 Capture reusable lessons, but do not turn a one-off event into a permanent core rule unless repeated experience or high severity justifies it.
 
-## 11. Default decision rule
+## 12. Default decision rule
 
 When multiple approaches satisfy the current project:
 
