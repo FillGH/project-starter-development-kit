@@ -78,6 +78,24 @@ Include only what is useful, for example:
 
 > [Describe the solution here.]
 
+### UI/UX interaction baseline — when applicable
+
+Use this subsection for **user-facing web apps or other UI-heavy products** where late interface changes would create meaningful rework. Delete it when not applicable.
+
+Before substantial backend/database/authentication/infrastructure integration:
+
+- [ ] A lightweight working prototype/preview exists using representative mock data.
+- [ ] Important user flows and realistic states have been exercised.
+- [ ] Information hierarchy, layout, wording, actions, navigation, and responsive behavior have been refined on representative target devices/viewports.
+- [ ] Material UI/UX decisions have been accepted by the owner/user.
+- [ ] The accepted prototype/baseline is referenced below.
+
+**Accepted UI/UX baseline / prototype reference:**
+
+> [Link, branch, preview, screenshot set, or short description]
+
+This is not a requirement for pixel-perfect styling before coding. It is a checkpoint to avoid expensive integration while the fundamental interaction model is still changing.
+
 ### Alternatives / Trade-offs considered
 
 | Option | Benefit | Cost / Risk | Decision |
@@ -171,6 +189,7 @@ Implementation may start when there is enough clarity to avoid coding from guess
 - [ ] Design direction is sufficient for implementation.
 - [ ] Acceptance criteria exist.
 - [ ] Material risks have been considered.
+- [ ] For UI-heavy products where interface decisions drive implementation, the important user flows have an accepted UI/UX interaction baseline from a representative prototype/preview.
 
 ## Ready to Release
 
@@ -192,8 +211,8 @@ DEFINE → DESIGN → BUILD → VERIFY → OPERATE → LEARN
 ```
 
 **DEFINE:** Understand the problem and outcome.  
-**DESIGN:** Choose scope, trade-offs, solution, and evidence.  
-**BUILD:** Implement the simplest sufficient baseline.  
+**DESIGN:** Choose scope, trade-offs, solution, and evidence. For UI-heavy products, refine the important interaction/UI baseline before costly integration.  
+**BUILD:** Implement the simplest sufficient accepted baseline.  
 **VERIFY:** Prove correctness with evidence appropriate to risk.  
 **OPERATE:** Use, maintain, detect failure, and recover as needed.  
 **LEARN:** Check whether the original problem improved and retain useful lessons.
