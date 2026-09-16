@@ -1,6 +1,6 @@
 # Project Starter Development Kit
 
-> **v0.1 — Ready for Pilot**
+> **v0.2 — UI/UX Refinement Pilot Revision**
 
 A lightweight, risk-based starter for engineering and software projects. It is designed to be reusable across web apps, dashboards, automations, AlgoTrade systems, industrial tools, scripts, and other technical projects without forcing heavyweight process onto small work.
 
@@ -22,11 +22,11 @@ Understand the problem, desired outcome, users, constraints, assumptions, and co
 ### DESIGN
 Choose scope, trade-offs, solution approach, risks, and acceptance criteria. Use a prototype, mock-up, pseudo-code, simulation, or other concrete preview when it helps resolve uncertainty before expensive implementation.
 
-For **user-facing web apps or other UI-heavy products**, UI/UX refinement belongs here by default when late interface changes would cause meaningful rework:
+For **user-facing web apps or other UI-heavy products**, UI/UX refinement belongs in DESIGN by default when late interface changes would cause meaningful rework:
 
 1. Build a lightweight working prototype or preview using representative mock data.
 2. Walk through the important user flows and realistic states.
-3. Refine information hierarchy, layout, wording, actions, navigation, and responsive behavior on the representative target devices/viewports.
+3. Refine information hierarchy, layout, wording, actions, navigation, and responsive behavior on representative target devices/viewports.
 4. Resolve material UI/UX decisions with the owner/user.
 5. Record the accepted interaction/UI baseline in `PROJECT.md` or link to the accepted prototype.
 6. Only then begin substantial backend, database, authentication, infrastructure, or deployment integration unless that integration is itself required to resolve a material design uncertainty.
@@ -38,7 +38,7 @@ This is a context-specific design technique, not a mandatory phase for non-UI pr
 ### BUILD
 Implement the agreed baseline using the simplest sufficient solution. Avoid speculative features, unnecessary abstractions, and infrastructure without a demonstrated need.
 
-Build in reviewable increments rather than treating BUILD as one large implementation step. Expose remaining uncertainty early, but do not reopen an accepted UI/UX baseline without a concrete requirement, usability finding, or implementation constraint.
+Build in reviewable increments when that reduces rework. For UI-heavy products, implement from the accepted interaction baseline and do not reopen fundamental UI/UX decisions without a concrete requirement, usability finding, or implementation constraint.
 
 An early prototype is not production evidence. Final verification must cover the intended integrated behavior and target environment where those materially affect correctness.
 
@@ -72,7 +72,7 @@ Before implementation, there should be enough clarity on:
 - Chosen design direction
 - Acceptance criteria
 - Material risks
-- For UI-heavy products where interface decisions drive implementation: an accepted UI/UX interaction baseline has been refined using a representative prototype/preview
+- For UI-heavy products where interface decisions drive implementation: an accepted UI/UX interaction baseline refined using a representative prototype/preview
 
 The goal is not perfect documentation. The goal is to avoid coding from guesses or integrating expensive infrastructure while fundamental product interaction is still unsettled.
 
@@ -115,11 +115,55 @@ A review finding is a recommendation, not an automatic requirement. Every action
 3. Complete `PROJECT.md` enough to pass **Ready to Build**.
 4. For UI-heavy web apps/products, prototype and refine the important user flows with representative data before substantial integration.
 5. Keep `AGENTS.md` unless the project has a concrete reason to amend it.
-6. Build the accepted baseline in reviewable increments.
+6. Build the accepted baseline.
 7. Verify the integrated baseline against the acceptance criteria.
 8. Add controls only when risk or complexity justifies them.
 9. After real use, capture useful lessons and refine the next project rather than adding process automatically.
 
+## Reusable bootstrap prompt
+
+Use a short bootstrap prompt instead of copying the process rules into every ChatGPT conversation. The repository remains the source of truth.
+
+```text
+Use Project Starter Development Kit for this project.
+
+Repository:
+<owner/repository>
+
+Before proceeding:
+1. Inspect the repository.
+2. Read README.md, PROJECT.md, and AGENTS.md.
+3. Treat PROJECT.md as the Engineering Source of Truth.
+4. Follow AGENTS.md as the working rules.
+5. Identify the current lifecycle stage:
+   DEFINE → DESIGN → BUILD → VERIFY → OPERATE → LEARN
+6. Summarize the Current State, unresolved decisions/risks, and Next Action.
+7. Continue from the project's actual state rather than restarting the process unnecessarily.
+8. If chat instructions conflict with the repository baseline, surface the conflict before changing the baseline.
+```
+
+## What changed in v0.2
+
+**Changed**
+
+- UI/UX prototype and refinement for UI-heavy products is explicitly DESIGN work.
+- Ready to Build conditionally requires an accepted UI/UX interaction baseline when interface decisions materially drive implementation.
+- Representative mock data, realistic states, and mobile/desktop behavior are considered before costly integration.
+- BUILD starts from the accepted interaction baseline while still allowing justified later changes.
+- The reusable Master Prompt is reduced to a repository bootstrap prompt so process rules are not duplicated outside `AGENTS.md`.
+
+**Unchanged**
+
+- Core lifecycle remains `DEFINE → DESIGN → BUILD → VERIFY → OPERATE → LEARN`.
+- Core repository remains `README.md`, `PROJECT.md`, and `AGENTS.md`.
+- There are still only two decision gates: Ready to Build and Ready to Release.
+- Issues, branches, PRs, Codex review, CI/CD, tests, monitoring, backup, and runbooks remain risk-based optional controls.
+- Review findings remain `FIX / DEFER / REJECT`.
+
+**Not added**
+
+- No mandatory design document, UI/UX file, ADR, Issue template, PR template, risk tier, branch strategy, review count, or CI/CD workflow.
+
 ## Pilot rule
 
-This kit is intentionally **v0.1**. Pilot it on several real projects before promoting it to a stable v1.0. Add a rule to the core only when repeated experience shows that the rule consistently prevents real problems or creates clear value.
+This kit is still being refined through real projects. Treat **v0.2** as a pilot revision and promote additional rules only when repeated experience or high-severity evidence shows that they consistently prevent real problems or create clear value.
