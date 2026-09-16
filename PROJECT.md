@@ -1,6 +1,7 @@
 # Project Definition
 
-> This file is the **engineering source of truth** for the project.
+> **Project Starter Development Kit template revision: v0.2**  
+> This file is the **engineering source of truth** for the project.  
 > Keep it concise. Add detail only when it improves decisions, implementation, verification, or operation.
 
 ## 1. Problem
@@ -95,6 +96,8 @@ Before substantial backend/database/authentication/infrastructure integration:
 > [Link, branch, preview, screenshot set, or short description]
 
 This is not a requirement for pixel-perfect styling before coding. It is a checkpoint to avoid expensive integration while the fundamental interaction model is still changing.
+
+If integration is genuinely required to resolve a material UI/UX uncertainty, document that exception instead of forcing an artificial prototype-only decision.
 
 ### Alternatives / Trade-offs considered
 
