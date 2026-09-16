@@ -1,5 +1,7 @@
 # Agent and Developer Working Rules
 
+> **Project Starter Development Kit template revision: v0.2**
+
 This repository follows a lightweight, risk-based engineering process.
 
 `PROJECT.md` is the authoritative statement of intended project behavior, scope, acceptance criteria, risks, and current baseline.
@@ -44,6 +46,8 @@ Default approach for such work:
 
 Do not require pixel-perfect styling or exhaustive edge-state polish at this stage. The purpose is to stabilize the fundamental interaction model before integration makes change expensive.
 
+If integration is required to answer a real design question, use only enough integration to resolve that uncertainty; do not treat that exception as a reason to build the full production stack early.
+
 For non-UI projects, use an equivalent early artifact only when it materially reduces uncertainty or rework; do not force a UI-style prototype process onto unrelated work.
 
 ## 5. Build only when Ready to Build
@@ -60,13 +64,13 @@ Before substantial implementation, confirm that `PROJECT.md` provides enough cla
 
 Perfect documentation is not required. Avoid implementing from unresolved guesses that could materially change the solution.
 
-## 6. Build in reviewable increments
+## 6. Build from the accepted baseline
 
-- Do not treat BUILD as one large implementation step when earlier feedback can reduce rework.
-- Expose remaining uncertainty early.
-- Prefer validating uncertain logic or integration boundaries before committing to unnecessary downstream complexity.
+- Implement the simplest sufficient accepted baseline.
+- Build in reviewable increments when that materially reduces rework or improves feedback.
 - Do not reopen an accepted UI/UX baseline without a concrete requirement, usability finding, or implementation constraint.
-- Keep early prototypes clearly separate from production evidence. Final verification must cover the intended integrated system and target environment where those materially affect correctness.
+- Distinguish fundamental interaction changes from ordinary polish; spacing, minor wording, styling, and visual polish do not automatically invalidate the accepted baseline.
+- Keep prototypes clearly separate from production evidence. Final verification must cover the intended integrated system and target environment where those materially affect correctness.
 
 ## 7. Verify against evidence
 
