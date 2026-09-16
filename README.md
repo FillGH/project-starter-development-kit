@@ -20,16 +20,27 @@ DEFINE → DESIGN → BUILD → VERIFY → OPERATE → LEARN
 Understand the problem, desired outcome, users, constraints, assumptions, and consequences of failure. A valid outcome may be **DO NOT BUILD** when a simpler solution is better.
 
 ### DESIGN
-Choose scope, trade-offs, solution approach, risks, and acceptance criteria. Use a prototype, mock-up, pseudo-code, or simulation only when it helps resolve uncertainty.
+Choose scope, trade-offs, solution approach, risks, and acceptance criteria. Use a prototype, mock-up, pseudo-code, simulation, or other concrete preview when it helps resolve uncertainty before expensive implementation.
+
+For **user-facing web apps or other UI-heavy products**, UI/UX refinement belongs here by default when late interface changes would cause meaningful rework:
+
+1. Build a lightweight working prototype or preview using representative mock data.
+2. Walk through the important user flows and realistic states.
+3. Refine information hierarchy, layout, wording, actions, navigation, and responsive behavior on the representative target devices/viewports.
+4. Resolve material UI/UX decisions with the owner/user.
+5. Record the accepted interaction/UI baseline in `PROJECT.md` or link to the accepted prototype.
+6. Only then begin substantial backend, database, authentication, infrastructure, or deployment integration unless that integration is itself required to resolve a material design uncertainty.
+
+The goal is **not pixel-perfect design before coding**. The goal is to avoid paying integration cost while the fundamental interaction model is still changing.
+
+This is a context-specific design technique, not a mandatory phase for non-UI projects.
 
 ### BUILD
 Implement the agreed baseline using the simplest sufficient solution. Avoid speculative features, unnecessary abstractions, and infrastructure without a demonstrated need.
 
-Build in **reviewable increments** rather than treating BUILD as one large implementation step. Expose the part with the highest uncertainty, human-feedback need, or rework cost early, review it before expensive integration, then continue toward the complete system.
+Build in reviewable increments rather than treating BUILD as one large implementation step. Expose remaining uncertainty early, but do not reopen an accepted UI/UX baseline without a concrete requirement, usability finding, or implementation constraint.
 
-For UI-heavy products this often means a working UI preview with representative mock data before backend/database integration. For other projects the early reviewable artifact may instead be a calculation, script output, simulation, API contract, data transformation, hardware behavior, or another concrete result. This is guidance, not a mandatory phase structure.
-
-An early preview is not production evidence. Final verification must use the intended integrated behavior and target environment where those materially affect correctness.
+An early prototype is not production evidence. Final verification must cover the intended integrated behavior and target environment where those materially affect correctness.
 
 ### VERIFY
 Use evidence to show that the solution satisfies the acceptance criteria. Evidence may include manual tests, automated tests, backtests, field tests, smoke tests, or user acceptance depending on the project.
@@ -61,8 +72,9 @@ Before implementation, there should be enough clarity on:
 - Chosen design direction
 - Acceptance criteria
 - Material risks
+- For UI-heavy products where interface decisions drive implementation: an accepted UI/UX interaction baseline has been refined using a representative prototype/preview
 
-The goal is not perfect documentation. The goal is to avoid coding from guesses.
+The goal is not perfect documentation. The goal is to avoid coding from guesses or integrating expensive infrastructure while fundamental product interaction is still unsettled.
 
 ### Ready to Release
 Before real use, confirm that:
@@ -101,11 +113,12 @@ A review finding is a recommendation, not an automatic requirement. Every action
 1. Create a repository from this template.
 2. Replace this README with project-specific usage information when appropriate.
 3. Complete `PROJECT.md` enough to pass **Ready to Build**.
-4. Keep `AGENTS.md` unless the project has a concrete reason to amend it.
-5. Build in reviewable increments; expose uncertainty and feedback-sensitive work early when useful.
-6. Verify the integrated baseline against the acceptance criteria.
-7. Add controls only when risk or complexity justifies them.
-8. After real use, capture useful lessons and refine the next project rather than adding process automatically.
+4. For UI-heavy web apps/products, prototype and refine the important user flows with representative data before substantial integration.
+5. Keep `AGENTS.md` unless the project has a concrete reason to amend it.
+6. Build the accepted baseline in reviewable increments.
+7. Verify the integrated baseline against the acceptance criteria.
+8. Add controls only when risk or complexity justifies them.
+9. After real use, capture useful lessons and refine the next project rather than adding process automatically.
 
 ## Pilot rule
 
