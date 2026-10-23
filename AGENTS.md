@@ -1,6 +1,6 @@
 # Agent and Developer Working Rules
 
-> **Project Starter Development Kit template revision: v0.2**
+> **Project Starter Development Kit template revision: v0.3**
 
 This repository follows a lightweight, risk-based engineering process.
 
@@ -46,6 +46,8 @@ Default approach for such work:
 
 Do not require pixel-perfect styling or exhaustive edge-state polish at this stage. The purpose is to stabilize the fundamental interaction model before integration makes change expensive.
 
+For device-specific interfaces, check realistic interaction states (keyboard, input focus, empty/long content, Back, and device controls as relevant) on a representative real device when mocks cannot prove usability.
+
 If integration is required to answer a real design question, use only enough integration to resolve that uncertainty; do not treat that exception as a reason to build the full production stack early.
 
 For non-UI projects, use an equivalent early artifact only when it materially reduces uncertainty or rework; do not force a UI-style prototype process onto unrelated work.
@@ -79,6 +81,8 @@ Perfect documentation is not required. Avoid implementing from unresolved guesse
 - Manual testing is acceptable when it is reliable and proportionate.
 - Automate tests when logic, regression risk, repeated execution, money, important data, production impact, or similar consequences justify it.
 - Passing compilation or a successful deployment is not by itself evidence that the project outcome is correct.
+- Where device, browser, permissions, storage, camera, or similar runtime behavior matters, distinguish build/CI verification from owner/target-environment smoke tests.
+- Report material checks as **PASS / FAIL / NOT TESTED (including owner-deferred) / OUT OF SCOPE** with actual evidence or reason. Never manufacture a pass or silently treat a deferred check as passing.
 
 ## 8. Review policy
 
@@ -133,6 +137,8 @@ Consider, where relevant:
 
 Do not add these controls when their cost exceeds the credible consequence they mitigate.
 
+For projects that retain important user data, clarify data ownership and the expected effects of delete, reset/uninstall, update, and recovery where applicable. Test a restore round trip when backup/recovery is a material acceptance criterion. For installable signed apps, protect signing credentials and verify the release/upgrade identity when continued updates matter; never commit private signing material.
+
 ## 11. After release
 
 Treat operation as part of engineering.
@@ -145,6 +151,8 @@ When useful, observe whether the solution:
 - actually improves the original problem and success criteria.
 
 Capture reusable lessons, but do not turn a one-off event into a permanent core rule unless repeated experience or high severity justifies it.
+
+Once the owner accepts a release, close that baseline rather than continuing to add unrelated features. Keep user-facing release documentation current; archive obsolete support documents if useful, without rewriting history. Documentation-only maintenance does not itself require rebuilding the released application.
 
 ## 12. Default decision rule
 
