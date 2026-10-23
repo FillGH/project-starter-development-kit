@@ -1,6 +1,6 @@
 # Project Definition
 
-> **Project Starter Development Kit template revision: v0.2**  
+> **Project Starter Development Kit template revision: v0.3**  
 > This file is the **engineering source of truth** for the project.  
 > Keep it concise. Add detail only when it improves decisions, implementation, verification, or operation.
 
@@ -86,7 +86,7 @@ Use this subsection for **user-facing web apps or other UI-heavy products** wher
 Before substantial backend/database/authentication/infrastructure integration:
 
 - [ ] A lightweight working prototype/preview exists using representative mock data.
-- [ ] Important user flows and realistic states have been exercised.
+- [ ] Important user flows and realistic states have been exercised (e.g., empty, keyboard open, long content, Back navigation when relevant).
 - [ ] Information hierarchy, layout, wording, actions, navigation, and responsive behavior have been refined on representative target devices/viewports.
 - [ ] Material UI/UX decisions have been accepted by the owner/user.
 - [ ] The accepted prototype/baseline is referenced below.
@@ -98,6 +98,12 @@ Before substantial backend/database/authentication/infrastructure integration:
 This is not a requirement for pixel-perfect styling before coding. It is a checkpoint to avoid expensive integration while the fundamental interaction model is still changing.
 
 If integration is genuinely required to resolve a material UI/UX uncertainty, document that exception instead of forcing an artificial prototype-only decision.
+
+### Data lifecycle — only when persistent data matters
+
+Briefly capture the storage/ownership of important data, what happens on delete/uninstall/reset, and whether backup/restore or migration is required. Delete this subsection if data-loss risk is immaterial. No formal matrix is required.
+
+**Relevant data and lifecycle decisions:** [ ]
 
 ### Alternatives / Trade-offs considered
 
@@ -126,7 +132,7 @@ Acceptance criteria define what evidence is required to consider the baseline co
 - **AC1:** [Given/when/then or clear pass/fail criterion]
 - **AC2:** [Criterion]
 
-Verification may be manual or automated depending on risk and value.
+Verification may be manual or automated depending on risk and value. For material checks, distinguish **PASS / FAIL / NOT TESTED (including owner-deferred) / OUT OF SCOPE** and keep short evidence or rationale. A build pass does not substitute for target-environment verification.
 
 ## 10. Important Risks
 
@@ -145,7 +151,8 @@ The current baseline is done when:
 - [ ] Acceptance criteria pass.
 - [ ] No known critical defect remains.
 - [ ] Material risks are handled to an appropriate level.
-- [ ] The solution works in its intended environment.
+- [ ] The solution works in its intended environment, with real-device or field evidence when relevant.
+- [ ] Material unverified/deferred checks are explicitly assessed rather than counted as passes.
 - [ ] Recovery/fallback is defined where the consequence of failure justifies it.
 - [ ] The owner/user accepts the result.
 
@@ -201,7 +208,8 @@ Release may proceed when:
 - [ ] Acceptance criteria pass with appropriate evidence.
 - [ ] No known critical defect remains.
 - [ ] Material risks are controlled appropriately.
-- [ ] The target environment has been verified.
+- [ ] The target environment has been verified independently of compile/CI where runtime behavior matters.
+- [ ] Material deferred or unverified tests and residual risks are visible to the owner.
 - [ ] Recovery/fallback exists where justified by risk.
 - [ ] The owner/user accepts the result.
 
