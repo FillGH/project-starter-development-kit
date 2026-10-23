@@ -1,6 +1,6 @@
 # Project Starter Development Kit
 
-> **v0.2 — UI/UX Refinement Pilot Revision**
+> **v0.3 — Practical Learning from Android Projects**
 
 A lightweight, risk-based starter for engineering and software projects. It is designed to be reusable across web apps, dashboards, automations, AlgoTrade systems, industrial tools, scripts, and other technical projects without forcing heavyweight process onto small work.
 
@@ -25,7 +25,7 @@ Choose scope, trade-offs, solution approach, risks, and acceptance criteria. Use
 For **user-facing web apps or other UI-heavy products**, UI/UX refinement belongs in DESIGN by default when late interface changes would cause meaningful rework:
 
 1. Build a lightweight working prototype or preview using representative mock data.
-2. Walk through the important user flows and realistic states.
+2. Walk through important flows and realistic states (for example, empty content, keyboard open, long content, and Back navigation when relevant).
 3. Refine information hierarchy, layout, wording, actions, navigation, and responsive behavior on representative target devices/viewports.
 4. Resolve material UI/UX decisions with the owner/user.
 5. Record the accepted interaction/UI baseline in `PROJECT.md` or link to the accepted prototype.
@@ -34,6 +34,8 @@ For **user-facing web apps or other UI-heavy products**, UI/UX refinement belong
 The goal is **not pixel-perfect design before coding**. The goal is to avoid paying integration cost while the fundamental interaction model is still changing.
 
 This is a context-specific design technique, not a mandatory phase for non-UI projects.
+
+When persistent data matters, briefly decide who owns it, where it is stored, what delete/uninstall does, and whether backup/restore is needed. Do not require a data matrix for projects without meaningful data-loss risk.
 
 ### BUILD
 Implement the agreed baseline using the simplest sufficient solution. Avoid speculative features, unnecessary abstractions, and infrastructure without a demonstrated need.
@@ -45,11 +47,13 @@ An early prototype is not production evidence. Final verification must cover the
 ### VERIFY
 Use evidence to show that the solution satisfies the acceptance criteria. Evidence may include manual tests, automated tests, backtests, field tests, smoke tests, or user acceptance depending on the project.
 
+A successful build/CI run is not proof of correct behavior on the target device or environment. Report material checks honestly as **PASS / FAIL / NOT TESTED (including owner-deferred) / OUT OF SCOPE**, with concise evidence or reason. An unrun check must never be counted as a pass.
+
 ### OPERATE
 Consider real-world use: ownership, failure detection, fallback, recovery, backup, maintenance, and support only to the level justified by risk.
 
 ### LEARN
-Check whether the solution actually improved the original problem. Capture lessons that are likely to be useful again.
+Check whether the solution actually improved the original problem. Capture lessons that are likely to be useful again. Once an accepted release is closed, avoid adding features indefinitely: consider a new baseline/version, keep the README current, and archive obsolete supporting material only if useful.
 
 ## Core files
 
@@ -85,6 +89,7 @@ Before real use, confirm that:
 - The target environment works
 - Recovery/fallback exists when the risk justifies it
 - The owner/user accepts the result
+- Any meaningful unverified/deferred checks and residual risks are visible to the owner, not presented as passed tests
 
 ## Risk-based controls
 
@@ -142,28 +147,17 @@ Before proceeding:
 8. If chat instructions conflict with the repository baseline, surface the conflict before changing the baseline.
 ```
 
-## What changed in v0.2
+## What changed in v0.3
 
-**Changed**
+Two completed Android projects (Body Progress V1.0 and Personal Utilities V1.5a) reinforced a few broadly reusable lessons:
 
-- UI/UX prototype and refinement for UI-heavy products is explicitly DESIGN work.
-- Ready to Build conditionally requires an accepted UI/UX interaction baseline when interface decisions materially drive implementation.
-- Representative mock data, realistic states, and mobile/desktop behavior are considered before costly integration.
-- BUILD starts from the accepted interaction baseline while still allowing justified later changes.
-- The reusable Master Prompt is reduced to a repository bootstrap prompt so process rules are not duplicated outside `AGENTS.md`.
+- Exercise relevant real-device UI states early, rather than trusting layout previews alone.
+- Consider data ownership and delete/uninstall/recovery behavior only when persistent data warrants it.
+- Separate build/CI evidence from target-environment evidence, and label deferred tests honestly.
+- Close an accepted release deliberately; keep current documentation accurate and put new features in a future baseline when appropriate.
 
-**Unchanged**
-
-- Core lifecycle remains `DEFINE → DESIGN → BUILD → VERIFY → OPERATE → LEARN`.
-- Core repository remains `README.md`, `PROJECT.md`, and `AGENTS.md`.
-- There are still only two decision gates: Ready to Build and Ready to Release.
-- Issues, branches, PRs, Codex review, CI/CD, tests, monitoring, backup, and runbooks remain risk-based optional controls.
-- Review findings remain `FIX / DEFER / REJECT`.
-
-**Not added**
-
-- No mandatory design document, UI/UX file, ADR, Issue template, PR template, risk tier, branch strategy, review count, or CI/CD workflow.
+**Unchanged:** The six-stage lifecycle, three core files, two decision gates, optional risk-based controls, and `FIX / DEFER / REJECT` review policy. No mandatory Android stack, checklist, CI workflow, signing system, or additional file was introduced.
 
 ## Pilot rule
 
-This kit is still being refined through real projects. Treat **v0.2** as a pilot revision and promote additional rules only when repeated experience or high-severity evidence shows that they consistently prevent real problems or create clear value.
+This kit is still being refined through real projects. Treat **v0.3** as a pilot revision and promote additional rules only when repeated experience or high-severity evidence shows that they consistently prevent real problems or create clear value.
